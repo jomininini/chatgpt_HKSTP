@@ -15,8 +15,8 @@ st.set_page_config(
     page_icon=":robot:"
 )
 
-st.title('Formula 1 Search')
-st.subheader("Search for any Formula 1 rule questions you have")
+st.title('HKSTP Search')
+st.subheader("Search for any HKSTP questions you have")
 
 prompt = st.text_input("Enter your search here","", key="input")
 
@@ -30,7 +30,7 @@ if st.button('Submit', key='generationSubmit'):
     Summary:
     '''
     summary_prepped = summary_prompt.replace('SEARCH_QUERY_HERE',prompt).replace('SEARCH_RESULT_HERE',result_df['result'][0])
-    summary = openai.Completion.create(engine=COMPLETIONS_MODEL,prompt=summary_prepped,max_tokens=500)
+    summary = openai.Completion.create(engine=COMPLETIONS_MODEL,prompt=summary_prepped,max_tokens=1500)
     
     # Response provided by GPT-3
     st.write(summary['choices'][0]['text'])
